@@ -1,0 +1,88 @@
+<div class="register-page">
+  <div class="register-box">
+    <div class="card card-outline card-primary">
+      <div class="card-header text-center">
+        <a href="#"><b>DevTracker</b></a>
+      </div>
+      <div class="card-body">
+        <p class="login-box-msg">Register a new membership</p>
+        <form [formGroup]="saveForm"  autocomplete="off" (ngSubmit)="onSubmit()">
+          <span *ngIf="saveForm.get('fullName').touched && saveForm.get('fullName').hasError('required')" class="text-danger">
+            Required</span>
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" formControlName="fullName" name="fullName" placeholder="Full name">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-user"></span>
+              </div>
+            </div>
+          </div>
+          <span *ngIf="saveForm.get('email').touched && saveForm.get('email').hasError('required')" class="text-danger">
+            Required</span>
+          <span *ngIf="saveForm.get('email').touched && saveForm.get('email').hasError('email') && !saveForm.get('email').hasError('required')" class="text-danger">
+            Provide Valid email</span>
+          <div class="input-group mb-3">
+            <input type="email" class="form-control"  formControlName="email" name="email"  [email]="true" placeholder="Email">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-envelope"></span>
+              </div>
+            </div>
+          </div>
+          <span *ngIf="saveForm.get('username').touched && saveForm.get('username').hasError('required')" class="text-danger">
+            Required</span>
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" formControlName="username" name="username" placeholder="Username">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-user"></span>
+              </div>
+            </div>
+          </div>
+          <span *ngIf="saveForm.get('password').touched && saveForm.get('password').hasError('required')" class="text-danger">
+            Required</span>
+          <div class="input-group mb-3">
+            <input type="password" class="form-control" formControlName="password" name="password" placeholder="Password">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-lock"></span>
+              </div>
+            </div>
+          </div>
+          <span *ngIf="saveForm.get('confirmPassword').touched && saveForm.get('confirmPassword').hasError('required')" class="text-danger">
+            Required</span>
+          <div class="input-group mb-3">
+            <input type="password" class="form-control" formControlName="confirmPassword" name="confirmPassword" placeholder="Retype password">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-lock"></span>
+              </div>
+            </div>
+          </div>
+          <p class="text-danger" *ngIf="saveForm.get('confirmPassword').hasError('incorrect')">{{saveForm.get('confirmPassword').errors.incorrect}}</p>
+          <div class="row">
+            <div class="col-8">
+              <div class="icheck-primary">
+                <input type="checkbox" id="agreeTerms" name="terms" formControlName="terms" value="agree">
+                <label for="agreeTerms">
+                  I agree to the <a href="#">terms</a>
+                </label>
+              </div>
+              <span *ngIf="saveForm.get('terms').touched && saveForm.get('terms').hasError('required')"
+                class="text-danger">
+                Required</span>
+            </div>
+            <!-- /.col -->
+            <div class="col-4">
+              <button type="submit" class="btn btn-primary btn-block">Register</button>
+            </div>
+            <!-- /.col -->
+          </div>
+        </form>
+        <a [routerLink]="['/auth']" class="text-center">I already have a membership</a>
+      </div>
+      <!-- /.form-box -->
+    </div><!-- /.card -->
+  </div>
+  <!-- /.register-box -->
+</div>
