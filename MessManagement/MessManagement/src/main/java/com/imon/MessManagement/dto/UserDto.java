@@ -1,5 +1,6 @@
 package com.imon.MessManagement.dto;
 
+import com.imon.MessManagement.model.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,4 +16,11 @@ public class UserDto {
     private String email;
     private String mobile;
     private String password;
+
+    public UserDto(User user) {
+        this.id = user.getId();
+        this.name = user.getName();
+        this.email = user.getEmail();
+        this.mobile = user.getMobile();
+    }
 }

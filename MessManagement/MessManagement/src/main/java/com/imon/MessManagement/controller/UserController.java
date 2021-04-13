@@ -3,11 +3,13 @@ package com.imon.MessManagement.controller;
 
 import com.imon.MessManagement.dto.UserDto;
 import com.imon.MessManagement.form.UserForm;
+import com.imon.MessManagement.model.User;
 import com.imon.MessManagement.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -23,7 +25,12 @@ public class UserController {
 
     @GetMapping("/get")
     public ResponseEntity<List<UserDto>> getUsers() {
-        return new ResponseEntity<>(service.getUsers(), HttpStatus.OK);
+        List<User> userList = service.getUsers();
+        List<UserDto> userResponseList = new ArrayList<UserDto>();
+        userList.stream().forEach(user -> {
+            userResponseList.add(new UserDto(user));
+        });
+        return new ResponseEntity<>(userResponseList, HttpStatus.OK);
     }
 
     @PostMapping("/")
