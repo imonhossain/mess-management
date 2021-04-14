@@ -26,7 +26,7 @@
                 <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
                 <div class="input-group-append">
                     <button class="btn btn-sidebar">
-                        <i class="fas fa-search fa-fw"></i>
+                        <i class="fa fa-search" aria-hidden="true"></i>
                     </button>
                 </div>
             </div>
@@ -48,7 +48,7 @@
                 </li>
                 <li class="nav-item">
                     <a [routerLink]="['/screen-list']" class="nav-link">
-                        <i class="nav-icon fas fa-th"></i>
+                        
                         <p>
                             Screen List
 
@@ -57,7 +57,7 @@
                 </li>
                 <li class="nav-item">
                     <a [routerLink]="['/project']" class="nav-link">
-                        <i class="nav-icon fas fa-th"></i>
+                       
                         <p>
                             Project
                         </p>
@@ -65,9 +65,15 @@
                 </li>
                 <li class="nav-item">
                     <a [routerLink]="['/member-add']" class="nav-link">
-                        <i class="nav-icon fas fa-th"></i>
                         <p>
                             Member list
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a [routerLink]="['/deposit-money']" class="nav-link">
+                        <p>
+                            Deposit Money
                         </p>
                     </a>
                 </li>

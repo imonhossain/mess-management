@@ -33175,3 +33175,11 @@ button.toast-close-button {
 .cursor-pointer{
   cursor: pointer !important;
 }
+
+.fa{
+  margin-right:5px;
+}
+
+.modal-dialog{
+  width: 550px !important;
+}

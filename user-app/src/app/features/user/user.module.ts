@@ -11,13 +11,17 @@ import { NgxBootstrapConfirmModule } from 'ngx-bootstrap-confirm';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { ChartsModule } from 'ng2-charts';
 import { MemberAddComponent } from './components/member-add/member-add.component';
+import { DepositMoneyComponent } from './components/deposit-money/deposit-money.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
+
 @NgModule({
     declarations: [
         UserComponent,
         UserScreenlistComponent,
         ProjectlistComponent,
         AdminDashboardComponent,
-        MemberAddComponent
+        MemberAddComponent,
+        DepositMoneyComponent
     ],
     imports: [
         CommonModule,
@@ -26,7 +30,9 @@ import { MemberAddComponent } from './components/member-add/member-add.component
         ReactiveFormsModule,
         FormsModule,
         NgxBootstrapConfirmModule,
-        ChartsModule
+        ChartsModule,
+        ModalModule.forRoot(),
+
     ],
     providers: [],
     bootstrap: [UserComponent]
