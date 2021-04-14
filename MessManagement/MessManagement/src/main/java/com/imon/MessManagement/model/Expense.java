@@ -9,7 +9,7 @@ import java.util.Date;
 @Entity
 @Getter
 @Setter
-public class Account {
+public class Expense {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -17,12 +17,12 @@ public class Account {
     @Column(nullable = false)
     private Integer userId;
 
-    @Column(length = 5, nullable = false)
+    @Column(nullable = false)
     private Integer amount;
 
     @Temporal(TemporalType.DATE)
     @Column(length = 100, nullable = false)
-    private Date depositDate;
+    private Date expenseDate;
 
     @Column(length = 500)
     private String comment;
