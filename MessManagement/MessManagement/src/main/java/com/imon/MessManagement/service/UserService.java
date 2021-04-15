@@ -24,7 +24,7 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    public Optional<User> getEmployeeById(Integer id){
+    public Optional<User> getUserByID(Integer id){
         return userRepository.findById(id);
     }
 
