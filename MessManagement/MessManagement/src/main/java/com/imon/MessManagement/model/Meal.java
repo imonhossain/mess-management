@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.Date;
 
 @Entity
@@ -21,6 +22,6 @@ public class Meal {
     @Column(length = 100,  nullable = false)
     private Date mealDate;
 
-    @Column(length = 100,  nullable = false)
-    private String mealCount;
+    @Column(nullable = false)
+    private BigDecimal mealCount;
 }

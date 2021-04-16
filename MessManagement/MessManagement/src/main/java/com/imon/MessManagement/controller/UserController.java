@@ -2,12 +2,10 @@ package com.imon.MessManagement.controller;
 
 
 import com.imon.MessManagement.dto.UserDto;
-import com.imon.MessManagement.form.UserForm;
 import com.imon.MessManagement.model.User;
 import com.imon.MessManagement.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -42,7 +40,7 @@ public class UserController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Optional<User>> getUserById(@PathVariable Integer id) {
-        return new ResponseEntity<>(service.getEmployeeById(id), HttpStatus.OK);
+        return new ResponseEntity<>(service.getUserByID(id), HttpStatus.OK);
     }
 
     @PutMapping("")
@@ -51,7 +49,7 @@ public class UserController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteEmployee(@PathVariable Integer id){
+    public void deleteUser(@PathVariable Integer id){
         service.deleteUser(id);
     }
 
