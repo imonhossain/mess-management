@@ -26,7 +26,7 @@ public class AccountController {
     public ResponseEntity<Account> saveAccount(@RequestBody Account accout){
         return  new ResponseEntity<>(service.saveAccount(accout), HttpStatus.CREATED);
     }
-    @GetMapping("/${id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Optional<Account>> getAccountByID(@PathVariable Integer id){
         return new ResponseEntity<>(service.getAccountById(id), HttpStatus.OK);
     }
