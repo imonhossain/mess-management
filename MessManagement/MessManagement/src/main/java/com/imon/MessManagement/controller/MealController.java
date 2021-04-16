@@ -40,7 +40,7 @@ public class MealController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteEmployee(@PathVariable Integer id){
+    public void deleteMeal(@PathVariable Integer id){
         service.deleteMeal(id);
     }
 }
