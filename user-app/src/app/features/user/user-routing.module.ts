@@ -10,6 +10,7 @@ import { AuthGuardAdmin } from "src/app/core/guard/auth-guard-admin";
 import { AdminDashboardComponent } from "./components/admin-dashboard/admin-dashboard.component";
 import { MemberAddComponent } from "./components/member-add/member-add.component";
 import { DepositMoneyComponent } from "./components/deposit-money/deposit-money.component";
+import { BazarListComponent } from "./components/bazar-list/bazar-list.component";
 
 
 const routes: Routes = [
@@ -21,8 +22,9 @@ const routes: Routes = [
             // { path: 'dashboard', canActivate: [AuthGuard], component: UserDashboardComponent },
             { path: 'screen-list',  component: UserScreenlistComponent },
             { path: 'project', component: ProjectlistComponent },
-            { path: 'member-add', component: MemberAddComponent },
+            { path: 'member-list', component: MemberAddComponent },
             { path: 'deposit-money', component: DepositMoneyComponent },
+            { path: 'bazar-list', component: BazarListComponent },
 
 
             // { path: '', redirectTo: 'dashboard', pathMatch: 'full'},
