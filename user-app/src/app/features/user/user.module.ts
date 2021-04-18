@@ -13,6 +13,7 @@ import { ChartsModule } from 'ng2-charts';
 import { MemberAddComponent } from './components/member-add/member-add.component';
 import { DepositMoneyComponent } from './components/deposit-money/deposit-money.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { BazarListComponent } from './components/bazar-list/bazar-list.component';
 
 @NgModule({
     declarations: [
@@ -21,7 +22,8 @@ import { ModalModule } from 'ngx-bootstrap/modal';
         ProjectlistComponent,
         AdminDashboardComponent,
         MemberAddComponent,
-        DepositMoneyComponent
+        DepositMoneyComponent,
+        BazarListComponent
     ],
     imports: [
         CommonModule,
