@@ -11,13 +11,19 @@ import { NgxBootstrapConfirmModule } from 'ngx-bootstrap-confirm';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { ChartsModule } from 'ng2-charts';
 import { MemberAddComponent } from './components/member-add/member-add.component';
+import { AccountListComponent } from './components/account-list/account-list.component';
+import { ExpenseListComponent } from './components/expense-list/expense-list.component';
+import { MealListComponent } from './components/meal-list/meal-list.component';
 @NgModule({
     declarations: [
         UserComponent,
         UserScreenlistComponent,
         ProjectlistComponent,
         AdminDashboardComponent,
-        MemberAddComponent
+        MemberAddComponent,
+        AccountListComponent,
+        ExpenseListComponent,
+        MealListComponent
     ],
     imports: [
         CommonModule,

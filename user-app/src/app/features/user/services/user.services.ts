@@ -2,16 +2,15 @@ import { Injectable } from '@angular/core';
 import { BaseDataService } from 'src/app/shared/base-data.services';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserServices {
+  constructor(private apiService: BaseDataService) {}
 
-  constructor(private apiService: BaseDataService) { }
-  
-  public getUsers(){
-    return this.apiService.get(`User/GetApplicationUsers`);
+  public getUsers() {
+    return this.apiService.get(`user`);
   }
-  public getUserUnderProject(params){
+  public getUserUnderProject(params) {
     return this.apiService.get(`User/GetUserUnderProject/${params}`);
   }
 
