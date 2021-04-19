@@ -14,9 +14,6 @@ public class Account {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(nullable = false)
-    private Integer userId;
-
     @Column(length = 5, nullable = false)
     private Integer amount;
 
@@ -26,4 +23,8 @@ public class Account {
 
     @Column(length = 500)
     private String comment;
+
+    @Column(nullable = false)
+    private Integer userId;
+
 }

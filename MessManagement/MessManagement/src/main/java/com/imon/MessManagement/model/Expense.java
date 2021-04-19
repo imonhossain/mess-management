@@ -15,9 +15,6 @@ public class Expense {
     private Integer id;
 
     @Column(nullable = false)
-    private Integer userId;
-
-    @Column(nullable = false)
     private Integer amount;
 
     @Temporal(TemporalType.DATE)
@@ -26,4 +23,7 @@ public class Expense {
 
     @Column(length = 500)
     private String comment;
+
+    @Column(nullable = false)
+    private Integer userId;
 }

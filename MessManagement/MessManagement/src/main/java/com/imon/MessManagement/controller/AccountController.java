@@ -1,5 +1,6 @@
 package com.imon.MessManagement.controller;
 
+import com.imon.MessManagement.dto.AccountDto;
 import com.imon.MessManagement.model.Account;
 import com.imon.MessManagement.model.Meal;
 import com.imon.MessManagement.service.AccountService;
@@ -12,25 +13,25 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/account")
+@RequestMapping("/api")
 public class AccountController {
     private final AccountService service;
     public AccountController(AccountService service){
         this.service = service;
     }
-    @GetMapping("")
+    @GetMapping("/account")
     public ResponseEntity<List<Account>> getAccounts(){
         return new ResponseEntity<>(service.getAccounts(), HttpStatus.OK);
     }
-    @PostMapping("")
+    @PostMapping("/account")
     public ResponseEntity<Account> saveAccount(@RequestBody Account accout){
         return  new ResponseEntity<>(service.saveAccount(accout), HttpStatus.CREATED);
     }
-    @GetMapping("/{id}")
+    @GetMapping("/account/{id}")
     public ResponseEntity<Optional<Account>> getAccountByID(@PathVariable Integer id){
         return new ResponseEntity<>(service.getAccountById(id), HttpStatus.OK);
     }
-    @PutMapping("")
+    @PutMapping("/account")
     public ResponseEntity<Account> updateAccount(@RequestBody Account accout){
         return  new ResponseEntity<>(service.updateAccount(accout), HttpStatus.ACCEPTED);
     }
@@ -38,6 +39,11 @@ public class AccountController {
     @DeleteMapping("/{id}")
     public void deleteAccount(@PathVariable Integer id){
         service.deleteAccount(id);
+    }
+
+    @GetMapping("/account/all-account-list")
+    public ResponseEntity<List<AccountDto>> getAllAmount(){
+        return new ResponseEntity<>(service.getAllAmount(), HttpStatus.OK);
     }
 
 }
