@@ -9,7 +9,7 @@ import { WebStorageService } from 'src/app/core/services/web-storage.service';
 @Component({
   selector: 'app-user-project-list',
   templateUrl: './project-list.component.html',
-  styleUrls: ['./project-list.component.css']
+  styleUrls: ['./project-list.component.css'],
 })
 export class ProjectlistComponent implements OnInit {
   public projectList = [];
@@ -24,7 +24,7 @@ export class ProjectlistComponent implements OnInit {
     private fb: FormBuilder,
     private commonService: CommonService,
     private confirmationService: NgxBootstrapConfirmService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.getAllProject();
@@ -48,53 +48,51 @@ export class ProjectlistComponent implements OnInit {
 
   getAllProject(): void {
     this.projectList.length = 0;
-    this.projectService.getProjectList().subscribe(result => {
+    this.projectService.getProjectList().subscribe((result) => {
       result = JSON.parse(JSON.stringify(result));
       if (result['success']) {
-        result['data'].forEach(element => {
-          this.projectList.push(new Project(element))
+        result['data'].forEach((element) => {
+          this.projectList.push(new Project(element));
         });
       }
-    })
+    });
   }
   onClickDelete(id, index): void {
     let options = {
       title: 'Sure you want to delete this Project?',
       confirmLabel: 'Yes',
-      declineLabel: 'No'
-    }
+      declineLabel: 'No',
+    };
     this.confirmationService.confirm(options).then((res: boolean) => {
       if (res) {
-        this.projectService.deleteProject(id).subscribe(result => {
+        this.projectService.deleteProject(id).subscribe((result) => {
           const responseData = JSON.parse(JSON.stringify(result));
           this.commonService.toastSuccess(responseData.message);
           this.projectList.splice(index, 1);
-        })
+        });
       } else {
         console.log('Cancel');
       }
     });
   }
   getUsers() {
-    this.userService.getUsers().subscribe(result => {
+    this.userService.getUsers().subscribe((result) => {
       result = JSON.parse(JSON.stringify(result));
       if (result['success']) {
-        result['data'].forEach(element => {
-          this.userList.push(element)
+        result['data'].forEach((element) => {
+          this.userList.push(element);
         });
       }
-    })
-
+    });
   }
   onSubmit() {
-    if (!this.saveForm.valid)
-      return;
+    if (!this.saveForm.valid) return;
 
     const title = this.saveForm.value.title;
     let saveObj = {
-      title
-    }
-    this.projectService.saveProject(saveObj).subscribe(result => {
+      title,
+    };
+    this.projectService.saveProject(saveObj).subscribe((result) => {
       const responseData = JSON.parse(JSON.stringify(result));
       if (responseData.success) {
         this.commonService.toastSuccess(responseData.message);
@@ -105,13 +103,12 @@ export class ProjectlistComponent implements OnInit {
   }
 
   onAssign() {
-    if (!this.projectAssignForm.valid)
-      return;
+    if (!this.projectAssignForm.valid) return;
 
     let assignObj = this.projectAssignForm.value;
     // console.log("assignObj", assignObj);
     // return;
-    this.projectService.assignUserToProject(assignObj).subscribe(result => {
+    this.projectService.assignUserToProject(assignObj).subscribe((result) => {
       const responseData = JSON.parse(JSON.stringify(result));
       if (responseData.success) {
         this.commonService.toastSuccess(responseData.message);
@@ -123,34 +120,33 @@ export class ProjectlistComponent implements OnInit {
   public userListByProjectId = [];
 
   listenToChangeProject() {
-    this.projectAssignForm.get('ProjectId').valueChanges.subscribe(ProjectId => {
-      
-      if(ProjectId){
-        this.getUsrsbyId(ProjectId);
-      }
-      console.log('name has changed:', ProjectId)
-    });
+    this.projectAssignForm
+      .get('ProjectId')
+      .valueChanges.subscribe((ProjectId) => {
+        if (ProjectId) {
+          this.getUsrsbyId(ProjectId);
+        }
+        console.log('name has changed:', ProjectId);
+      });
   }
 
-  getUsrsbyId(ProjectId){
-    this.userService.getUserUnderProject(ProjectId).subscribe(result=>{
-      const responseData = JSON.parse(JSON.stringify(result));
-      if (responseData.success) {
-        this.userListByProjectId = responseData.data[0].userList;
-        // this.saveForm.reset();
-        console.log(" this.userListByProjectId",  this.userListByProjectId);
-      }
-    })
+  getUsrsbyId(ProjectId) {
+    // this.userService.getUserUnderProject(ProjectId).subscribe(result=>{
+    //   const responseData = JSON.parse(JSON.stringify(result));
+    //   if (responseData.success) {
+    //     this.userListByProjectId = responseData.data[0].userList;
+    //     // this.saveForm.reset();
+    //     console.log(" this.userListByProjectId",  this.userListByProjectId);
+    //   }
+    // })
   }
 
-  public isShowOption(value){
-    const found = this.userListByProjectId.find(user=>user.userId == value);
-    if(found){
+  public isShowOption(value) {
+    const found = this.userListByProjectId.find((user) => user.userId == value);
+    if (found) {
       return false;
-    }
-    else{
+    } else {
       return true;
     }
   }
-
 }

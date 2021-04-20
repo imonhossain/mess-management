@@ -10,19 +10,16 @@ export class UserServices {
   public getUsers() {
     return this.apiService.get(`user`);
   }
-  public getUserUnderProject(params) {
-    return this.apiService.get(`User/GetUserUnderProject/${params}`);
+
+  public saveUser(params) {
+    return this.apiService.request('POST', `user`, params);
   }
 
-  // public saveProject(params) {
-  //   return this.apiService.request('POST', `Project/CreateProject`, params);
-  // }
+  public updateUser(params) {
+    return this.apiService.request('PUT', 'user', params);
+  }
 
-  // public updateProject(params) {
-  //   return this.apiService.request("PUT", 'Project/CreateProject', params)
-  // }
-
-  // public deleteProject(id) {
-  //   return this.apiService.request("DELETE", `Project/ArchiveProjectById/${id}`);
-  // }
+  public deleteUser(id) {
+    return this.apiService.request('DELETE', `user/${id}`);
+  }
 }

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/api/user")
 public class UserController {
@@ -25,6 +25,7 @@ public class UserController {
 
     @GetMapping("")
     public ResponseEntity<List<UserDto>> getUsers() {
+        System.out.println("JHello");
         List<User> userList = service.getUsers();
         List<UserDto> userResponseList = new ArrayList<UserDto>();
         userList.stream().forEach(user -> {
@@ -35,6 +36,7 @@ public class UserController {
 
     @PostMapping("")
     public ResponseEntity<User> saveUser(@RequestBody User user) {
+        System.out.println("JHello");
         return new ResponseEntity<>(service.saveUser(user), HttpStatus.CREATED);
     }
 
