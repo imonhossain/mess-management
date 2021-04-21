@@ -1,5 +1,6 @@
 package com.imon.MessManagement.controller;
 
+import com.imon.MessManagement.dto.ExpenseDto;
 import com.imon.MessManagement.model.Expense;
 import com.imon.MessManagement.service.ExpenseService;
 import org.springframework.http.HttpStatus;
@@ -19,9 +20,13 @@ public class ExpenseController {
     }
 
     @GetMapping("")
-    public ResponseEntity<List<Expense>> getAllExpense(){
-        return new ResponseEntity<>(service.getAllExpense(), HttpStatus.OK);
+    public ResponseEntity<List<ExpenseDto>> getAllExpense(){
+        return new ResponseEntity<>(service.getAllExpenseWithName(), HttpStatus.OK);
     }
+//    @GetMapping("")
+//    public ResponseEntity<List<Expense>> getAllExpense(){
+//        return new ResponseEntity<>(service.getAllExpense(), HttpStatus.OK);
+//    }
     @PostMapping("")
     public  ResponseEntity<Expense> saveExpense(@RequestBody Expense expense){
         return new ResponseEntity<>(service.saveExpense(expense), HttpStatus.CREATED);
