@@ -8,6 +8,9 @@ import { ProjectlistComponent } from './components/project-list/project-list.com
 import { AuthGuardAdmin } from 'src/app/core/guard/auth-guard-admin';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { MemberAddComponent } from './components/member-add/member-add.component';
+import { ExpenseListComponent } from './components/expense-list/expense-list.component';
+import { AccountListComponent } from './components/account-list/account-list.component';
+import { MealListComponent } from './components/meal-list/meal-list.component';
 
 const routes: Routes = [
   {
@@ -19,7 +22,10 @@ const routes: Routes = [
       // { path: 'dashboard', canActivate: [AuthGuard], component: UserDashboardComponent },
       { path: 'screen-list', component: UserScreenlistComponent },
       { path: 'project', component: ProjectlistComponent },
-      { path: 'user-list', component: MemberAddComponent },
+      { path: 'member-add', component: MemberAddComponent },
+      { path: 'expense', component: ExpenseListComponent },
+      { path: 'account', component: AccountListComponent },
+      { path: 'meal', component: MealListComponent },
       // { path: '', redirectTo: 'dashboard', pathMatch: 'full'},
       // { path: 'dashboard', canActivate: [AuthGuard], component: AdminDashboardComponent },
       // // { path: 'dashboard', canActivate: [AuthGuard], component: UserDashboardComponent },

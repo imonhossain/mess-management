@@ -4,21 +4,20 @@ import { WebStorageService } from 'src/app/core/services/web-storage.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-
-  constructor(public webStorageService:WebStorageService) { }
-  username = "";
-  usernameType = "";
+  constructor(public webStorageService: WebStorageService) {}
+  username = '';
+  usernameType = '';
   ngOnInit(): void {
-    this.username = this.webStorageService.getUser().username;
-    console.log("username", this.username);
-    if(this.webStorageService.isAdmin()){
-      this.usernameType = "Admin"; 
-    }else{
-      this.usernameType = "User";
+    this.username = '';
+    // this.username = this.webStorageService.getUser().username;
+    console.log('username', this.username);
+    if (this.webStorageService.isAdmin()) {
+      this.usernameType = 'Admin';
+    } else {
+      this.usernameType = 'User';
     }
   }
-
 }

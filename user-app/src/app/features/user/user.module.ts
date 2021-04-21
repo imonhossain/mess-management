@@ -1,4 +1,3 @@
-
 import { NgModule } from '@angular/core';
 import { UserComponent } from './user.component';
 import { UserRoutingModule } from './user-routing.module';
@@ -14,27 +13,29 @@ import { MemberAddComponent } from './components/member-add/member-add.component
 import { AccountListComponent } from './components/account-list/account-list.component';
 import { ExpenseListComponent } from './components/expense-list/expense-list.component';
 import { MealListComponent } from './components/meal-list/meal-list.component';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 @NgModule({
-    declarations: [
-        UserComponent,
-        UserScreenlistComponent,
-        ProjectlistComponent,
-        AdminDashboardComponent,
-        MemberAddComponent,
-        AccountListComponent,
-        ExpenseListComponent,
-        MealListComponent
-    ],
-    imports: [
-        CommonModule,
-        StructureModule,
-        UserRoutingModule,
-        ReactiveFormsModule,
-        FormsModule,
-        NgxBootstrapConfirmModule,
-        ChartsModule
-    ],
-    providers: [],
-    bootstrap: [UserComponent]
+  declarations: [
+    UserComponent,
+    UserScreenlistComponent,
+    ProjectlistComponent,
+    AdminDashboardComponent,
+    MemberAddComponent,
+    AccountListComponent,
+    ExpenseListComponent,
+    MealListComponent,
+  ],
+  imports: [
+    CommonModule,
+    StructureModule,
+    UserRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
+    NgxBootstrapConfirmModule,
+    ChartsModule,
+    BsDatepickerModule.forRoot(),
+  ],
+  providers: [],
+  bootstrap: [UserComponent],
 })
-export class UserModule { }
+export class UserModule {}

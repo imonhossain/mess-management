@@ -24,14 +24,15 @@ public class UserController {
     }
 
     @GetMapping("")
-    public ResponseEntity<List<UserDto>> getUsers() {
-        System.out.println("JHello");
-        List<User> userList = service.getUsers();
-        List<UserDto> userResponseList = new ArrayList<UserDto>();
-        userList.stream().forEach(user -> {
-            userResponseList.add(new UserDto(user));
-        });
-        return new ResponseEntity<>(userResponseList, HttpStatus.OK);
+    public ResponseEntity<List<User>> getUsers() {
+        return new ResponseEntity<>(service.getUsers(), HttpStatus.OK);
+//        System.out.println("JHello");
+//        List<User> userList = service.getUsers();
+//        List<UserDto> userResponseList = new ArrayList<UserDto>();
+//        userList.stream().forEach(user -> {
+//            userResponseList.add(new UserDto(user));
+//        });
+//        return new ResponseEntity<>(userResponseList, HttpStatus.OK);
     }
 
     @PostMapping("")
