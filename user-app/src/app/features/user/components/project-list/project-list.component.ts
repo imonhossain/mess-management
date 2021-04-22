@@ -22,8 +22,7 @@ export class ProjectlistComponent implements OnInit {
     private projectService: ProjectService,
     private userService: UserServices,
     private fb: FormBuilder,
-    private commonService: CommonService,
-    private confirmationService: NgxBootstrapConfirmService
+    private commonService: CommonService
   ) {}
 
   ngOnInit(): void {
@@ -63,17 +62,17 @@ export class ProjectlistComponent implements OnInit {
       confirmLabel: 'Yes',
       declineLabel: 'No',
     };
-    this.confirmationService.confirm(options).then((res: boolean) => {
-      if (res) {
-        this.projectService.deleteProject(id).subscribe((result) => {
-          const responseData = JSON.parse(JSON.stringify(result));
-          this.commonService.toastSuccess(responseData.message);
-          this.projectList.splice(index, 1);
-        });
-      } else {
-        console.log('Cancel');
-      }
-    });
+    // this.confirmationService.confirm(options).then((res: boolean) => {
+    //   if (res) {
+    //     this.projectService.deleteProject(id).subscribe((result) => {
+    //       const responseData = JSON.parse(JSON.stringify(result));
+    //       this.commonService.toastSuccess(responseData.message);
+    //       this.projectList.splice(index, 1);
+    //     });
+    //   } else {
+    //     console.log('Cancel');
+    //   }
+    // });
   }
   getUsers() {
     this.userService.getUsers().subscribe((result) => {

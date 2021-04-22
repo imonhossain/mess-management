@@ -19,8 +19,7 @@ export class AccountListComponent implements OnInit {
     private accountServices: AccountServices,
     private userService: UserServices,
     private fb: FormBuilder,
-    private commonService: CommonService,
-    private confirmationService: NgxBootstrapConfirmService
+    private commonService: CommonService
   ) {}
 
   ngOnInit(): void {

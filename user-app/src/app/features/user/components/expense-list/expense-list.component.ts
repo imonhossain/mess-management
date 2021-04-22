@@ -20,8 +20,7 @@ export class ExpenseListComponent implements OnInit {
     private expenseServices: ExpenseServices,
     private userService: UserServices,
     private fb: FormBuilder,
-    private commonService: CommonService,
-    private confirmationService: NgxBootstrapConfirmService
+    private commonService: CommonService
   ) {}
 
   ngOnInit(): void {

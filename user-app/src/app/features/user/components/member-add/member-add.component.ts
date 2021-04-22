@@ -17,8 +17,7 @@ export class MemberAddComponent implements OnInit {
   constructor(
     private userService: UserServices,
     private fb: FormBuilder,
-    private commonService: CommonService,
-    private confirmationService: NgxBootstrapConfirmService
+    private commonService: CommonService
   ) {}
 
   ngOnInit(): void {
