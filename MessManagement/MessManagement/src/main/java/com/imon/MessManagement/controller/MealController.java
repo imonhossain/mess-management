@@ -1,4 +1,5 @@
 package com.imon.MessManagement.controller;
+import com.imon.MessManagement.dto.MealDto;
 import com.imon.MessManagement.model.Meal;
 import com.imon.MessManagement.service.MealService;
 import org.springframework.http.HttpStatus;
@@ -19,9 +20,14 @@ public class MealController {
         this.service = service;
     }
 
+//    @GetMapping("")
+//    public ResponseEntity<List<Meal>> getMeals() {
+//        List<Meal> mealList = service.getMeals();
+//        return new ResponseEntity<>(mealList, HttpStatus.OK);
+//    }
     @GetMapping("")
-    public ResponseEntity<List<Meal>> getMeals() {
-        List<Meal> mealList = service.getMeals();
+    public ResponseEntity<List<MealDto>> getMeals() {
+        List<MealDto> mealList = service.getAllUserWiseMeal();
         return new ResponseEntity<>(mealList, HttpStatus.OK);
     }
 

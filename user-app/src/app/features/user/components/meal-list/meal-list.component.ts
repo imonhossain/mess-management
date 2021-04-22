@@ -12,7 +12,7 @@ import { UserServices } from '../../services/user.services';
   styleUrls: ['./meal-list.component.css'],
 })
 export class MealListComponent implements OnInit {
-  public expenseList = [];
+  public mealList = [];
   public users = [];
   public saveForm: FormGroup;
   public dataSaving = false;
@@ -30,14 +30,11 @@ export class MealListComponent implements OnInit {
     this.getAllUser();
   }
   getAllAccounts(): void {
-    this.expenseList.length = 0;
+    this.mealList.length = 0;
     this.totalAmount = 0;
     this.mealServices.getExpenses().subscribe((result) => {
-      this.expenseList = JSON.parse(JSON.stringify(result));
-      this.totalAmount = this.expenseList.reduce(
-        (n, { amount }) => n + amount,
-        0
-      );
+      this.mealList = JSON.parse(JSON.stringify(result));
+      this.totalAmount = this.mealList.reduce((n, { amount }) => n + amount, 0);
     });
   }
   getAllUser(): void {
@@ -52,9 +49,8 @@ export class MealListComponent implements OnInit {
     this.saveForm = this.fb.group({
       id: [null],
       userId: ['', Validators.required],
-      amount: [0, Validators.required],
-      expenseDate: [null, Validators.required],
-      comment: [''],
+      mealCount: [0, Validators.required],
+      mealDate: [null, Validators.required],
     });
   }
 

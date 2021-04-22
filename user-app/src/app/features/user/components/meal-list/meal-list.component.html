@@ -1,1 +1,138 @@
-<p>meal-list works!</p>
+<div class="container-fluid mt-3">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="card">
+        <h6 class="card-header">Meal list</h6>
+        <div class="card-body">
+          <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Total Meal</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of mealList; let i = index">
+                <th scope="row">{{ i + 1 }}</th>
+                <td>{{ item.name }}</td>
+                <td>{{ item.email }}</td>
+                <td>{{ item.totalMeal }}</td>
+                <td>
+                  <a
+                    class="btn btn-sm btn-info mr-1"
+                    (click)="onClickDetail(item)"
+                    routerLink="/meal-detail/{{ item.userId }}"
+                  >
+                    <i class="fa fa-arrows-alt" aria-hidden="true"></i>
+                  </a>
+                  <!-- <button
+                    class="btn btn-sm btn-danger"
+                    (click)="onClickDelete(item.id)"
+                  >
+                    <i class="fa fa-trash"></i>
+                  </button> -->
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card">
+        <h6 class="card-header">Meal</h6>
+        <div class="card-body">
+          <form
+            [formGroup]="saveForm"
+            autocomplete="off"
+            (ngSubmit)="onSubmit()"
+          >
+            <div class="form-group">
+              <select
+                class="form-control"
+                formControlName="userId"
+                name="userId"
+              >
+                <option value="">Select user</option>
+                <option *ngFor="let user of users" [value]="user.id">
+                  {{ user.name }}
+                </option>
+              </select>
+              <!-- <input
+                type="text"
+                class="form-control"
+                formControlName="name"
+                name="name"
+                placeholder="Name"
+              /> -->
+              <span
+                *ngIf="
+                  saveForm.get('userId').touched &&
+                  saveForm.get('userId').hasError('required')
+                "
+                class="text-danger"
+              >
+                Required</span
+              >
+            </div>
+
+            <div class="form-group">
+              <input
+                type="number"
+                class="form-control"
+                formControlName="mealCount"
+                name="mealCount"
+                placeholder="Input meal"
+              />
+              <span
+                *ngIf="
+                  saveForm.get('mealCount').touched &&
+                  saveForm.get('mealCount').hasError('required')
+                "
+                class="text-danger"
+              >
+                Required</span
+              >
+            </div>
+            <div class="form-group">
+              <input
+                class="form-control"
+                formControlName="mealDate"
+                name="mealDate"
+                placeholder="date"
+                bsDatepicker
+                [bsConfig]="{ isAnimated: true }"
+              />
+              <span
+                *ngIf="
+                  saveForm.get('mealDate').touched &&
+                  saveForm.get('mealDate').hasError('required')
+                "
+                class="text-danger"
+              >
+                Required</span
+              >
+            </div>
+            <div class="row">
+              <!-- /.col -->
+              <div class="col-md-12 text-right">
+                <button
+                  type="button"
+                  class="btn btn-info mr-1"
+                  (click)="onClickAddNew()"
+                >
+                  Add New
+                </button>
+                <button type="submit" class="btn btn-primary">Save</button>
+              </div>
+              <!-- /.col -->
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
