@@ -31,7 +31,7 @@ export class AccountListComponent implements OnInit {
 
   getAllAccounts(): void {
     this.accountList.length = 0;
-    this.accountServices.getUsers().subscribe((result) => {
+    this.accountServices.getAccounts().subscribe((result) => {
       this.accountList = JSON.parse(JSON.stringify(result));
       this.totalAmount = this.accountList.reduce(
         (n, { amount }) => n + amount,

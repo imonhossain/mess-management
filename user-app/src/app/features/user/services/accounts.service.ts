@@ -7,7 +7,7 @@ import { BaseDataService } from 'src/app/shared/base-data.services';
 export class AccountServices {
   constructor(private apiService: BaseDataService) {}
 
-  public getUsers() {
+  public getAccounts() {
     return this.apiService.get(`account/all-account-list`);
   }
 

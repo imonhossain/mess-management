@@ -26,10 +26,10 @@ export class MealListComponent implements OnInit {
 
   ngOnInit(): void {
     this.createForm();
-    this.getAllAccounts();
+    this.getAllMeals();
     this.getAllUser();
   }
-  getAllAccounts(): void {
+  getAllMeals(): void {
     this.mealList.length = 0;
     this.totalAmount = 0;
     this.mealServices.getMeals().subscribe((result) => {
@@ -59,13 +59,13 @@ export class MealListComponent implements OnInit {
     if (saveObj.id) {
       this.mealServices.saveMeal(saveObj).subscribe((result) => {
         this.commonService.toastSuccess('Update successfully');
-        this.getAllAccounts();
+        this.getAllMeals();
       });
     } else {
       delete saveObj.id;
       this.mealServices.saveMeal(this.saveForm.value).subscribe((result) => {
         this.commonService.toastSuccess('Save successfully');
-        this.getAllAccounts();
+        this.getAllMeals();
       });
     }
   }
@@ -78,7 +78,7 @@ export class MealListComponent implements OnInit {
   onClickDelete(id) {
     this.mealServices.deleteMeal(id).subscribe((result) => {
       this.commonService.toastSuccess('Delete successfully');
-      this.getAllAccounts();
+      this.getAllMeals();
     });
   }
 }
