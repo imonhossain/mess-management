@@ -1,71 +1,126 @@
 <div class="container-fluid">
-  <div class="card">
-    <div class="card-header mt-1">Info</div>
-    <div class="card-body">
-      <div class="row">
-        <div class="col-md-3 col-sm-6 col-12">
-          <div class="info-box">
-            <span class="info-box-icon bg-info"
-              ><i class="fa fa-envelope"></i
-            ></span>
-            <div class="info-box-content">
-              <span class="info-box-text">Total Meal</span>
-              <span class="info-box-number">{{
-                totalMeal | number: "1.2-2"
-              }}</span>
-            </div>
-            <!-- /.info-box-content -->
-          </div>
-          <!-- /.info-box -->
+  <div class="row mt-3">
+    <div class="col-md-3 col-sm-6 col-12">
+      <div class="info-box">
+        <span class="info-box-icon bg-info"
+          ><i class="fa fa-envelope"></i
+        ></span>
+        <div class="info-box-content">
+          <span class="info-box-text">Total Meal</span>
+          <span class="info-box-number">{{ totalMeal | number: "1.2-2" }}</span>
         </div>
-        <div class="col-md-3 col-sm-6 col-12">
-          <div class="info-box">
-            <span class="info-box-icon bg-dark"
-              ><i class="fa fa-envelope"></i
-            ></span>
-            <div class="info-box-content">
-              <span class="info-box-text">Meal Rate</span>
-              <span class="info-box-number">{{
-                mealRate | number: "1.2-2"
-              }}</span>
-            </div>
-            <!-- /.info-box-content -->
-          </div>
-          <!-- /.info-box -->
-        </div>
-        <div class="col-md-3 col-sm-6 col-12">
-          <div class="info-box">
-            <span class="info-box-icon bg-primary"
-              ><i class="fa fa-envelope"></i
-            ></span>
-            <div class="info-box-content">
-              <span class="info-box-text">Total Deposit</span>
-              <span class="info-box-number">{{
-                totalDeposit | number: "1.2-2"
-              }}</span>
-            </div>
-            <!-- /.info-box-content -->
-          </div>
-          <!-- /.info-box -->
-        </div>
-        <div class="col-md-3 col-sm-6 col-12">
-          <div class="info-box">
-            <span class="info-box-icon bg-danger"
-              ><i class="fa fa-envelope"></i
-            ></span>
-            <div class="info-box-content">
-              <span class="info-box-text">Total Expense</span>
-              <span class="info-box-number">{{
-                totalExpense | number: "1.2-2"
-              }}</span>
-            </div>
-            <!-- /.info-box-content -->
-          </div>
-          <!-- /.info-box -->
-        </div>
+        <!-- /.info-box-content -->
       </div>
+      <!-- /.info-box -->
+    </div>
+    <div class="col-md-3 col-sm-6 col-12">
+      <div class="info-box">
+        <span class="info-box-icon bg-dark"
+          ><i class="fa fa-envelope"></i
+        ></span>
+        <div class="info-box-content">
+          <span class="info-box-text">Meal Rate</span>
+          <span class="info-box-number">{{ mealRate | number: "1.2-2" }}</span>
+        </div>
+        <!-- /.info-box-content -->
+      </div>
+      <!-- /.info-box -->
+    </div>
+    <div class="col-md-3 col-sm-6 col-12">
+      <div class="info-box">
+        <span class="info-box-icon bg-primary"
+          ><i class="fa fa-envelope"></i
+        ></span>
+        <div class="info-box-content">
+          <span class="info-box-text">Total Deposit</span>
+          <span class="info-box-number">{{
+            totalDeposit | number: "1.2-2"
+          }}</span>
+        </div>
+        <!-- /.info-box-content -->
+      </div>
+      <!-- /.info-box -->
+    </div>
+    <div class="col-md-3 col-sm-6 col-12">
+      <div class="info-box">
+        <span class="info-box-icon bg-danger"
+          ><i class="fa fa-envelope"></i
+        ></span>
+        <div class="info-box-content">
+          <span class="info-box-text">Total Expense</span>
+          <span class="info-box-number">{{
+            totalExpense | number: "1.2-2"
+          }}</span>
+        </div>
+        <!-- /.info-box-content -->
+      </div>
+      <!-- /.info-box -->
     </div>
   </div>
+  <div class="card">
+    <h6 class="card-header">Report</h6>
+    <div class="card-body">
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <!-- <th scope="col">Email</th> -->
+            <th scope="col">Deposit Amount</th>
+            <th scope="col">Total Amount</th>
+            <th scope="col">Total Cost</th>
+            <th scope="col">Current Balance</th>
+            <!-- <th scope="col">Action</th> -->
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of userReportList; let i = index">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>{{ item.name }}</td>
+            <!-- <td>{{ item.email }}</td> -->
+            <td>{{ item.totalDeposit }}</td>
+            <td>{{ item.totalMeal }}</td>
+            <td>{{ item.totalMeal * mealRate | number: "1.2-2" }}</td>
+            <td>
+              <span
+                class="badge bg-primary"
+                *ngIf="item.totalDeposit - item.totalMeal * mealRate >= 0"
+              >
+                {{
+                  item.totalDeposit - item.totalMeal * mealRate
+                    | number: "1.2-2"
+                }}
+              </span>
+              <span
+                class="badge bg-danger"
+                *ngIf="item.totalDeposit - item.totalMeal * mealRate < 0"
+              >
+                {{
+                  item.totalDeposit - item.totalMeal * mealRate
+                    | number: "1.2-2"
+                }}</span
+              >
+            </td>
+            <!-- <td>
+              <button
+                class="btn btn-sm btn-info mr-1"
+                (click)="onClickUpdate(item)"
+              >
+                <i class="fa fa-edit"></i>
+              </button>
+              <button
+                class="btn btn-sm btn-danger"
+                (click)="onClickDelete(item.id)"
+              >
+                <i class="fa fa-trash"></i>
+              </button>
+            </td> -->
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
   <div class="row">
     <div class="col-md-6">
       <div class="card">

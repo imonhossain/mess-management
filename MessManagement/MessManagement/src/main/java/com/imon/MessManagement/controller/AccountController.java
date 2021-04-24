@@ -1,6 +1,7 @@
 package com.imon.MessManagement.controller;
 
 import com.imon.MessManagement.dto.AccountDto;
+import com.imon.MessManagement.dto.DashboardReportDto;
 import com.imon.MessManagement.model.Account;
 import com.imon.MessManagement.model.Meal;
 import com.imon.MessManagement.service.AccountService;
@@ -24,6 +25,13 @@ public class AccountController {
     public ResponseEntity<List<Account>> getAccounts(){
         return new ResponseEntity<>(service.getAccounts(), HttpStatus.OK);
     }
+
+    @GetMapping("/account/report")
+    public ResponseEntity<List<DashboardReportDto>> getDashboardReport(){
+        return new ResponseEntity<>(service.getDashboardReport(), HttpStatus.OK);
+    }
+
+
     @PostMapping("/account")
     public ResponseEntity<Account> saveAccount(@RequestBody Account accout){
         return  new ResponseEntity<>(service.saveAccount(accout), HttpStatus.CREATED);

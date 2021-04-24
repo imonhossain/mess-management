@@ -81,6 +81,7 @@ export class AdminDashboardComponent implements OnInit {
   public totalMeal = 0;
   public mealRate = 0;
   public userList = [];
+  public userReportList = [];
 
   constructor(
     private projectService: ProjectService,
@@ -108,6 +109,7 @@ export class AdminDashboardComponent implements OnInit {
       this.mealServices.getMeals(),
       this.expenseService.getExpenses(),
       this.accountService.getAccounts(),
+      this.accountService.getReports(),
     ];
     forkJoin(promiseAll).subscribe((results) => {
       console.log('results', results);
@@ -123,10 +125,13 @@ export class AdminDashboardComponent implements OnInit {
         (n, { amount }) => n + amount,
         0
       );
+      this.userReportList = JSON.parse(JSON.stringify(results[3]));
       this.mealRate = Number(this.totalExpense) / Number(this.totalMeal);
+
       console.log('this.totalMeal', this.totalMeal);
       console.log('this.totalExpense', this.totalExpense);
       console.log('this.mealRate', this.mealRate);
+      console.log('this.userReport', this.userReportList);
     });
   }
 

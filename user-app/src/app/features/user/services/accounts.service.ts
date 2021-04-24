@@ -10,6 +10,9 @@ export class AccountServices {
   public getAccounts() {
     return this.apiService.get(`account/all-account-list`);
   }
+  public getReports() {
+    return this.apiService.get(`account/report`);
+  }
 
   public saveUser(params) {
     return this.apiService.request('POST', `account`, params);
