@@ -15,6 +15,7 @@ export class AccountListComponent implements OnInit {
   public users = [];
   public saveForm: FormGroup;
   public dataSaving = false;
+  public totalAmount = 0;
   constructor(
     private accountServices: AccountServices,
     private userService: UserServices,
@@ -32,6 +33,10 @@ export class AccountListComponent implements OnInit {
     this.accountList.length = 0;
     this.accountServices.getUsers().subscribe((result) => {
       this.accountList = JSON.parse(JSON.stringify(result));
+      this.totalAmount = this.accountList.reduce(
+        (n, { amount }) => n + amount,
+        0
+      );
     });
   }
   getAllUser(): void {

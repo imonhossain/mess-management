@@ -13,7 +13,7 @@ export class MealDetailsComponent implements OnInit {
   public userId = null;
   public user;
   public mealList = [];
-  public totalAmount = 0;
+  public totalMeal = 0;
   constructor(
     private activatedRoute: ActivatedRoute,
     private mealServices: MealServices,
@@ -37,6 +37,10 @@ export class MealDetailsComponent implements OnInit {
   getMealDetails() {
     this.mealServices.getMealUserWise(this.userId).subscribe((result) => {
       this.mealList = JSON.parse(JSON.stringify(result));
+      this.totalMeal = this.mealList.reduce(
+        (n, { mealCount }) => n + mealCount,
+        0
+      );
     });
   }
   onClickDelete(id) {
