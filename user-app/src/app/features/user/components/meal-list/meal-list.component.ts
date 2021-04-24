@@ -32,7 +32,7 @@ export class MealListComponent implements OnInit {
   getAllAccounts(): void {
     this.mealList.length = 0;
     this.totalAmount = 0;
-    this.mealServices.getExpenses().subscribe((result) => {
+    this.mealServices.getMeals().subscribe((result) => {
       this.mealList = JSON.parse(JSON.stringify(result));
       this.totalAmount = this.mealList.reduce((n, { amount }) => n + amount, 0);
     });
@@ -57,13 +57,13 @@ export class MealListComponent implements OnInit {
   public onSubmit() {
     const saveObj = this.saveForm.value;
     if (saveObj.id) {
-      this.mealServices.saveUser(saveObj).subscribe((result) => {
+      this.mealServices.saveMeal(saveObj).subscribe((result) => {
         this.commonService.toastSuccess('Update successfully');
         this.getAllAccounts();
       });
     } else {
       delete saveObj.id;
-      this.mealServices.saveUser(this.saveForm.value).subscribe((result) => {
+      this.mealServices.saveMeal(this.saveForm.value).subscribe((result) => {
         this.commonService.toastSuccess('Save successfully');
         this.getAllAccounts();
       });
@@ -76,7 +76,7 @@ export class MealListComponent implements OnInit {
     this.saveForm.patchValue(item);
   }
   onClickDelete(id) {
-    this.mealServices.deleteUser(id).subscribe((result) => {
+    this.mealServices.deleteMeal(id).subscribe((result) => {
       this.commonService.toastSuccess('Delete successfully');
       this.getAllAccounts();
     });

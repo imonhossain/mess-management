@@ -11,6 +11,7 @@ import { MemberAddComponent } from './components/member-add/member-add.component
 import { ExpenseListComponent } from './components/expense-list/expense-list.component';
 import { AccountListComponent } from './components/account-list/account-list.component';
 import { MealListComponent } from './components/meal-list/meal-list.component';
+import { MealDetailsComponent } from './components/meal-details/meal-details.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,11 @@ const routes: Routes = [
       { path: 'expense', component: ExpenseListComponent },
       { path: 'account', component: AccountListComponent },
       { path: 'meal', component: MealListComponent },
+      {
+        path: 'meal-detail/:id',
+        pathMatch: 'full',
+        component: MealDetailsComponent,
+      },
       // { path: '', redirectTo: 'dashboard', pathMatch: 'full'},
       // { path: 'dashboard', canActivate: [AuthGuard], component: AdminDashboardComponent },
       // // { path: 'dashboard', canActivate: [AuthGuard], component: UserDashboardComponent },

@@ -14,6 +14,7 @@ import { AccountListComponent } from './components/account-list/account-list.com
 import { ExpenseListComponent } from './components/expense-list/expense-list.component';
 import { MealListComponent } from './components/meal-list/meal-list.component';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { MealDetailsComponent } from './components/meal-details/meal-details.component';
 @NgModule({
   declarations: [
     UserComponent,
@@ -24,6 +25,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     AccountListComponent,
     ExpenseListComponent,
     MealListComponent,
+    MealDetailsComponent,
   ],
   imports: [
     CommonModule,

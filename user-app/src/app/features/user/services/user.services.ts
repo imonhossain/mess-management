@@ -10,6 +10,9 @@ export class UserServices {
   public getUsers() {
     return this.apiService.get(`user`);
   }
+  public getUserById(id) {
+    return this.apiService.get(`user/${id}`);
+  }
 
   public saveUser(params) {
     return this.apiService.request('POST', `user`, params);

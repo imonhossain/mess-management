@@ -31,6 +31,12 @@ public class MealController {
         return new ResponseEntity<>(mealList, HttpStatus.OK);
     }
 
+    @GetMapping("/userwise/{id}")
+    public ResponseEntity<List<Meal>> getMealsUserWise(@PathVariable Integer id) {
+        List<Meal> mealList = service.findAllByUserId(id);
+        return new ResponseEntity<>(mealList, HttpStatus.OK);
+    }
+
     @PostMapping("")
     public ResponseEntity<Meal> saveMeal(@RequestBody Meal meal) {
         return new ResponseEntity<>(service.saveMeal(meal), HttpStatus.CREATED);

@@ -44,6 +44,10 @@ public class MealService {
         repository.deleteById(id);
     }
 
+    public List<Meal> findAllByUserId(Integer id) {
+        return repository.findAllByUserId(id);
+    }
+
     public List<MealDto> getAllUserWiseMeal() {
         List<MealDto> mealDtos = new ArrayList<>();
         List<User> userList = userRepository.findAll();

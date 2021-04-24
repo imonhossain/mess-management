@@ -6,23 +6,22 @@ import { BaseDataService } from 'src/app/shared/base-data.services';
 })
 export class MealServices {
   constructor(private apiService: BaseDataService) {}
-
-  public getUsers() {
-    return this.apiService.get(`account/all-account-list`);
+  public getMealUserWise(id) {
+    return this.apiService.get(`meal/userwise/${id}`);
   }
-  public getExpenses() {
+  public getMeals() {
     return this.apiService.get(`meal`);
   }
 
-  public saveUser(params) {
+  public saveMeal(params) {
     return this.apiService.request('POST', `meal`, params);
   }
 
-  public updateUser(params) {
+  public updateMeal(params) {
     return this.apiService.request('PUT', 'meal', params);
   }
 
-  public deleteUser(id) {
+  public deleteMeal(id) {
     return this.apiService.request('DELETE', `meal/${id}`);
   }
 }
